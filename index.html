@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureCrypt - Web-Based Text Encryption Tool</title>
+    <meta name="description" content="A powerful and modern web-based text encryption tool. Encrypt and decrypt messages securely using AES, Caesar Cipher, Base64, and SHA-256 hashing.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SecureCrypt</h1>
+            <p>Advanced Text Encryption & Hashing Tool</p>
+        </header>
+
+        <main>
+            <div class="input-group">
+                <label for="inputText">Input Text</label>
+                <textarea id="inputText" placeholder="Enter your secret message here..."></textarea>
+                <span id="inputError" class="error-msg">Input text cannot be empty.</span>
+            </div>
+
+            <div class="controls-container">
+                <div class="input-group">
+                    <label for="algorithm">Algorithm</label>
+                    <select id="algorithm">
+                        <option value="" disabled selected>Select an algorithm</option>
+                        <option value="aes">AES (Advanced Encryption Standard)</option>
+                        <option value="caesar">Caesar Cipher (Shift 3)</option>
+                        <option value="base64">Base64 Encoding</option>
+                        <option value="sha256">SHA-256 Hashing</option>
+                    </select>
+                    <span id="algoError" class="error-msg">Please select an algorithm.</span>
+                </div>
+
+                <div class="input-group" id="keyGroup" style="display: none;">
+                    <label for="secretKey">Secret Key</label>
+                    <input type="password" id="secretKey" placeholder="Enter a secret key for AES...">
+                    <span id="keyError" class="error-msg">Secret key cannot be empty for AES.</span>
+                </div>
+
+                <div class="action-mode">
+                    <label class="radio-label">
+                        <input type="radio" name="mode" value="encrypt" checked> Encrypt
+                    </label>
+                    <label class="radio-label" id="decryptLabel">
+                        <input type="radio" name="mode" value="decrypt"> Decrypt
+                    </label>
+                </div>
+            </div>
+
+            <button id="processBtn" class="primary-btn">Encrypt</button>
+
+            <div class="output-group">
+                <label for="outputText">Output Text</label>
+                <div class="output-wrapper">
+                    <textarea id="outputText" readonly placeholder="Result will appear here..."></textarea>
+                    <button id="copyBtn" class="icon-btn" title="Copy to clipboard">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    </button>
+                </div>
+                <div id="copyFeedback" class="feedback-msg">Copied to clipboard!</div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2026 SecureCrypt App. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
